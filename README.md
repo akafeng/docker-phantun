@@ -40,10 +40,12 @@ $ docker pull ghcr.io/akafeng/phantun
 
 ```bash
 $ docker run -d \
+  --env LOCAL_ADDR="4567" \
+  --env REMOTE_ADDR="127.0.0.1:1234" \
   --device=/dev/net/tun \
   --cap-add=NET_ADMIN \
   --network=host \
-  --restart=always \
+  --restart=unless-stopped \
   --name=phantun \
   ghcr.io/akafeng/phantun
 ```
